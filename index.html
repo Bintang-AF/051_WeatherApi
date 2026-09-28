@@ -402,3 +402,154 @@
 
                     }
 
+    // MEMBUAT CARD
+                    const card = `
+
+                        <div class="result-card">
+
+                            <div class="result-header">
+
+                                <div class="location-icon">
+                                    📍
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        ${placeName}
+                                    </h2>
+
+                                    <span>
+                                        MapTiler Geocoding Result
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="data-grid">
+
+
+                                <!-- PLACE NAME -->
+                                <div class="data-item">
+
+                                    <span class="data-label">
+                                        Place Name
+                                    </span>
+
+                                    <span class="data-value">
+                                        ${placeName}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- MATCHING TEXT -->
+                                <div class="data-item">
+
+                                    <span class="data-label">
+                                        Matching Text
+                                    </span>
+
+                                    <span class="data-value">
+                                        ${matchingText}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- TYPE -->
+                                <div class="data-item">
+
+                                    <span class="data-label">
+                                        Type
+                                    </span>
+
+                                    <span class="type-badge">
+                                        ${tipe}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- COORDINATES -->
+                                <div class="data-item">
+
+                                    <span class="data-label">
+                                        Coordinates
+                                    </span>
+
+                                    <span class="data-value coordinate">
+
+                                        Longitude:
+                                        ${longitude}
+
+                                        <br>
+
+                                        Latitude:
+                                        ${latitude}
+
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    $("#hasil").append(card);
+
+                });
+
+            },
+
+
+            error: function(error) {
+
+                console.log(error);
+
+                $("#status").html(
+                    "❌ Terjadi kesalahan saat mengambil data."
+                );
+
+                $("#hasil").html(`
+
+                    <div class="empty">
+
+                        ❌ Gagal mendapatkan data lokasi.
+
+                        <br><br>
+
+                        Periksa koneksi internet atau API Key.
+
+                    </div>
+
+                `);
+
+            }
+
+        });
+
+    }
+
+
+    // Bisa mencari menggunakan tombol ENTER
+    $("#kota").keypress(function(event) {
+
+        if (event.key === "Enter") {
+
+            cariLokasi();
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
